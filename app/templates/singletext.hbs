@@ -1,0 +1,40 @@
+{{!-- {{outlet}} --}}
+
+<h1>单文本演示</h1>
+{{!-- <div class="text">
+  <textarea name="text" id="text"></textarea>
+  <div>
+    <button type="submit">提交</button>
+  </div>
+</div> --}}
+{{my-textarea}}
+
+<div class="content">
+  <div><h3>分析结果</h3></div>
+  <div class="result clearfix">
+    <div class="left">
+      <ul>
+        <li>词性分析</li>
+        <li>实体识别</li>
+        <li>依存文法</li>
+        <li>情感分析</li>
+        <li>新闻摘要</li>
+        <li>新闻分类</li>
+        <li>关键词提取</li>
+        <li>词义联想</li>
+      </ul>
+    </div>
+    <div class="right">
+      {{my-tag}}
+      {{my-ner}}
+      {{my-depparser}}
+      {{my-sentiment}}
+      {{my-summary}}
+      {{my-classify}}
+      {{my-keywords}}
+      {{my-suggest}}
+    </div>
+    {{!-- <div class="clear"></div> --}}
+  </div>
+  <div class="floor">底部</div>
+</div>

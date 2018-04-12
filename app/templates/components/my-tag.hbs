@@ -1,0 +1,29 @@
+<div>
+  <div>词性分析</div>
+  <div>
+    <ul>
+      {{#each data as |items|}}
+      <li>
+        <div>
+          <ul>
+            {{#each items.list as |item|}}
+            <li style="display:inline-block">
+              <span class={{item.tag}}>{{item.word}}</span>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+        <div>
+          <ul>
+            {{#each items.tag as |item|}}
+            <li style="display:inline-block">
+              <span class={{item}}>{{item}}</span>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
