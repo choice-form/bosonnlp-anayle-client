@@ -1,4 +1,31 @@
-<div class="area">
-  <div>情感分析</div>
-  <div></div>
+<div class="area" id="my-sentiment">
+  <div>
+    <h3>情感分析:</h3>
+  </div>
+  <div>
+    <ul>
+      {{#each list as |item index|}}
+      <li class="inline">
+        <a class={{is-selected item.index selected}} onclick={{action 'selectSentiment' index}}>{{item.name}}</a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div>
+    <div>
+      <ul class="list">
+        {{#each data as |items|}}
+        <li>
+          <div>
+            <ul>
+              {{#each items as |item|}}
+              <li>{{item}}</li>
+              {{/each}}
+            </ul>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 </div>

@@ -1,4 +1,25 @@
-<div class="area">
-  <div>词义联想</div>
-  <div></div>
+<div class="area" id="my-suggest">
+  <div><h3>词义联想:</h3></div>
+  <div>
+    <div>关键词 - {{word}}</div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <td>相关性</td>
+            <td>名称</td>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each data as |items|}}
+          <tr>
+            {{#each items as |v|}}
+            <td>{{v}}</td>
+            {{/each}}
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

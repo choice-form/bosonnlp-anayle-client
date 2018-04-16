@@ -1,4 +1,15 @@
 <div class="area" id="my-summary">
-  <div>新闻摘要</div>
-  <div></div>
+  <div>
+    <div><h3>新闻摘要:</h3></div>
+    <div>
+        <ul>
+          {{#each list as |item index|}}
+            <li class="inline"><a class={{is-selected item.index selected}} onclick={{action 'click' item.index}}>{{item.name}}</a></li>
+          {{/each}}
+        </ul>
+    </div>
+  </div>
+  <div>
+    <p>{{data.word}}</p>
+  </div>
 </div>

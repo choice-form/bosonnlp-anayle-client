@@ -1,10 +1,12 @@
 import Component from '@ember/component';
+import { inject } from '@ember/service';
 
 export default Component.extend({
+  singleText: inject('single-text'),
   text: '',
   actions: {
     submit() {
-      console.log(this.get('text'))
+      this.get('submit')(this.text)
     }
   }
 });

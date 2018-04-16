@@ -1,4 +1,41 @@
-<div class="area">
-  <div>实体识别</div>
-  <div></div>
+<div class="area" id="my-ner">
+  <div><h3>实体识别:</h3></div>
+  <div>
+    <ul class="list">
+      {{#each list as |item index|}}
+        <li class="inline"><a class={{is-selected item.index selected}} onclick={{action 'selectNer' item.index}}>{{item.name}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
+  <div>
+    <ul class="list">
+      {{#each data as |items|}}
+      <li class="clearfix">
+        <div style="float:left;width:75%">
+          <ul class="list">
+            {{#each items.list as |item|}}
+              <li class="inline">
+                {{#if item.entity}}
+                  <span class="tag {{item.entity}}">{{item.value}}</span>
+                {{else}}
+                  <span class="tag normal">{{item.value}}</span>
+                {{/if}}
+                </li>
+            {{/each}}
+          </ul>
+        </div>
+        <div style="float:right;width:25%">
+          <div>类别图示:</div>
+          <ul class="list">
+            {{#each items.entity as |item|}}
+            <li class="inline">
+              <span class="tag {{item}}">{{ner-entity item}}</span>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
 </div>

@@ -1,53 +1,84 @@
 body {
-  width: 960px;
-  margin: 0 auto;
+    width: 960px;
+    margin: 0 auto;
+}
+
+table {
+    border-collapse: collapse;
+    tr,
+    td,
+    th {
+        border: 1px solid #488fce;
+        padding: 3px;
+    }
+    thead {
+        td {
+            background-color: #488fce;
+        }
+    }
+    tbody {
+        td {
+            border: 1px solid gray;
+        }
+    }
 }
 
 .text {
-  padding: 40px;
-  background-color: #f6f6f6;
-  textarea {
-      width: 100%;
-      height: 100px;
-  }
-  button {
-      margin-top: 5px;
-      float: right;
-  }
+    padding: 40px;
+    background-color: #f6f6f6;
+    textarea {
+        width: 100%;
+        height: 100px;
+    }
+    button {
+        margin-top: 5px;
+        float: right;
+    }
 }
 
-.content{
-margin-top:20px;
+.content {
+    margin-top: 20px;
 }
 
 .result {
-  position: relative;
-  .left {
-      width: 18%;
-      float: left;
-  }
-  .right {
-      float: right;
-      width: 78%;
-  }
+    position: relative;
+    .left {
+        width: 18%;
+        float: left;
+    }
+    .right {
+        float: right;
+        width: 78%;
+    }
 }
 
 .clearfix:after {
-  content: ".";
-  display: block;
-  height: 0;
-  visibility: hidden;
-  clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
 }
 
-.area{
-  background-color:#f6f6f6;
+.area {
+    background-color: #f6f6f6;
 }
 
-.list{
-  list-style:none;
-  margin-left: -30px;
+.list {
+    list-style: none;
+    margin-left: -30px;
 }
-.inline{
-  display:inline-block;
+
+.inline {
+    display: inline-block;
+}
+
+.select {
+    display: block;
+    border: 1px solid #ebebeb;
+    padding:3px
+}
+
+.selected{
+  background-color:#488fce;
 }

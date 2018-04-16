@@ -1,4 +1,32 @@
-<div class="area">
-  <div>关键词提取</div>
-  <div></div>
+<div class="area" id="my-keywords">
+  <div><h3>关键词提取:</h3></div>
+  <div>
+    {{!-- <ul class="list">
+      {{#each data as |items|}}
+      <li> --}}
+        {{#if data}}
+        <div>
+          <table class="table">
+            <thead class="thead">
+              <tr>
+                <td>权重</td>
+                <td>名称</td>
+              </tr>
+            </thead>
+            <tbody class="tbody">
+              {{#each data as |item|}}
+                <tr>
+                  {{#each item as |i|}}
+                  <td>{{i}}</td>
+                  {{/each}}
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        {{/if}}
+      {{!-- </li>
+      {{/each}}
+    </ul> --}}
+  </div>
 </div>

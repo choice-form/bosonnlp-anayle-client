@@ -7,7 +7,7 @@
     <button type="submit">提交</button>
   </div>
 </div> --}}
-{{my-textarea}}
+{{my-textarea submit=(action 'submit')}}
 
 <div class="content">
   <div><h3>分析结果</h3></div>
@@ -15,24 +15,24 @@
     <div class="left area">
       <ul style="list-style:none">
         <li><a href="#my-tag">词性分析</a></li>
-        <li><a href="">实体识别</a></li>
-        <li><a href="">依存文法</a></li>
-        <li><a href="">情感分析</a></li>
+        <li><a href="#my-ner">实体识别</a></li>
+        <li><a href="#">依存文法</a></li>
+        <li><a href="#my-sentiment">情感分析</a></li>
         <li><a href="#my-summary">新闻摘要</a></li>
-        <li><a href="">新闻分类</a></li>
-        <li><a href="">关键词提取</a></li>
-        <li><a href="">词义联想</a></li>
+        <li><a href="#my-classify">新闻分类</a></li>
+        <li><a href="#my-keywords">关键词提取</a></li>
+        <li><a href="#my-suggest">词义联想</a></li>
       </ul>
     </div>
     <div class="right">
-      {{my-tag}}
-      {{my-ner}}
+      {{my-tag data=tag}}
+      {{my-ner selectNer=(action 'selectNer') data=ner}}
       {{my-depparser}}
-      {{my-sentiment}}
-      {{my-summary}}
-      {{my-classify}}
-      {{my-keywords}}
-      {{my-suggest}}
+      {{my-sentiment selectSentiment=(action 'selectSentiment') data=sentiment}}
+      {{my-summary selectSummary=(action 'selectSummary') data=summary}}
+      {{my-classify data=classify}}
+      {{my-keywords data=keywords}}
+      {{my-suggest data=suggest word=keywordsForSuggest}}
     </div>
     {{!-- <div class="clear"></div> --}}
   </div>
