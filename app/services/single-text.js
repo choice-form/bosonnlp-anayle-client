@@ -1,27 +1,7 @@
 import Service from '@ember/service';
 import { computed } from '@ember/object'
 
-const baseUrl = 'http://192.168.50.127:3000'
-
-const post = async (url, text) => {
-  const res = await fetch(url, {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    method: 'POST',
-    body: JSON.stringify({
-      text
-    })
-  })
-  const json = await res.json()
-  if (json.status) {
-    console.log(json) //eslint-disable-line
-    return null
-  } else {
-    return json
-  }
-}
+import { baseUrl, post } from '../utils'
 
 export default Service.extend({
 
@@ -46,7 +26,10 @@ export default Service.extend({
   summary: null,
   async getTag() {
     const url = `${baseUrl}/tag`
-    const data = await post(url, this.text)
+    const body = {
+      text: this.text
+    }
+    const data = await post(url, body)
     console.group('分词-tag')
     console.log(data)
     console.groupEnd()
@@ -54,7 +37,10 @@ export default Service.extend({
   },
   async getNer(sensitivity = 3) {
     const url = `${baseUrl}/ner/?sensitivity=${sensitivity}`;
-    const data = await post(url, this.text)
+    const body = {
+      text: this.text
+    }
+    const data = await post(url, body)
     console.group('命名实体识别-ner')
     console.log(data)
     console.groupEnd()
@@ -62,7 +48,10 @@ export default Service.extend({
   },
   async getKeywords() {
     const url = `${baseUrl}/keywords`
-    const data = await post(url, this.text)
+    const body = {
+      text: this.text
+    }
+    const data = await post(url, body)
     console.group('关键字-keywords')
     console.log(data)
     console.groupEnd()
@@ -70,7 +59,10 @@ export default Service.extend({
   },
   async getSentiment(type = 'general') {
     const url = `${baseUrl}/sentiment/${type}`
-    const data = await post(url, this.text)
+    const body = {
+      text: this.text
+    }
+    const data = await post(url, body)
     console.group('情感分析-sentiment')
     console.log(data)
     console.groupEnd()
@@ -78,7 +70,10 @@ export default Service.extend({
   },
   async getClassify() {
     const url = `${baseUrl}/classify`
-    const data = await post(url, this.text)
+    const body = {
+      text: this.text
+    }
+    const data = await post(url, body)
     console.group('新闻分类-classify')
     console.log(data)
     console.groupEnd()
@@ -86,7 +81,10 @@ export default Service.extend({
   },
   async getSummary(percentage = 0.3) {
     const url = `${baseUrl}/summary?percentage=${percentage}`
-    const data = await post(url, this.text)
+    const body = {
+      text: this.text
+    }
+    const data = await post(url, body)
     console.group('新闻摘要-summary')
     console.log(data)
     console.groupEnd()
@@ -94,7 +92,10 @@ export default Service.extend({
   },
   async getSuggest() {
     const url = `${baseUrl}/suggest`
-    const data = await post(url, this.keywordsForSuggest)
+    const body = {
+      text: this.keywordsForSuggest
+    }
+    const data = await post(url, body)
     console.group('语义联想-suggest')
     console.log(data)
     console.groupEnd()

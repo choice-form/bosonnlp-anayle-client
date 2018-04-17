@@ -1,0 +1,12 @@
+<div class="text">
+  <div>
+    <ul class="list">
+      {{#each list as |item|}}
+        <li class="inline {{textarea-select item.index selected}}"><a onclick={{action 'select' item.index}} >{{item.name}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
+  <div>
+    {{textarea name="text" class="multiple-text" rows="10" value=text}}
+  </div>
+</div>
