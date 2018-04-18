@@ -1,0 +1,14 @@
+<dt onclick={{action 'showChange'}}>
+  <p class="new-list">{{get list 0}}</p>
+</dt>
+{{#if isShow}}
+<dd>
+  <ul class="list">
+    {{#each list as |item|}}
+    <li>
+      <p class="">{{item}}</p>
+    </li>
+    {{/each}}
+  </ul>
+</dd>
+{{/if}}

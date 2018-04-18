@@ -9,6 +9,9 @@ export default Controller.extend({
   text: computed('multipleText.text', function () {
     return this.get('multipleText').text
   }),
+  lineText: computed('multipleText.lineText', function () {
+    return this.get('multipleText').lineText
+  }),
   cluster: computed('multipleText.cluster', function () {
     return this.get('multipleText').cluster
   }),
@@ -21,6 +24,12 @@ export default Controller.extend({
   actions: {
     changeText(index) {
       this.get('multipleText').set('text', text[index].text)
+    },
+    sizeChange(value) {
+      this.get('multipleText').set('alpha', value.alpha)
+      this.get('multipleText').set('beta',value.beta)
+      // TODO: 实际请求需要去掉注释
+      // this.get('multipleText').getCluster()
     }
   },
   init() {
@@ -29,10 +38,11 @@ export default Controller.extend({
   },
   initGet() {
     this.get('multipleText').initCluster()
-    this.get('multipleText').clusterPush()
-      .then(() => {
-        this.get('multipleText').getCluster()
-      })
+    // TODO: 实际请求需要去掉注释
+    // this.get('multipleText').clusterPush()
+    //   .then(() => {
+    //     this.get('multipleText').getCluster()
+    //   })
   }
 })
 

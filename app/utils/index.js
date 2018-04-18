@@ -10,7 +10,7 @@ export async function post(url, body) {
     body: JSON.stringify(body)
   })
   const json = await res.json()
-  if (json.status) {
+  if (handleStatus(json.status)) {
     console.log(json) //eslint-disable-line
     return null
   } else {
@@ -27,10 +27,27 @@ export async function get(url) {
     method: 'GET'
   })
   const json = await res.json()
-  if (json.status) {
+  if (handleStatus(json.status)) {
     console.log(json)
     return null
   } else {
     return json
+  }
+}
+
+function handleStatus(status) {
+  switch (status) {
+    case 'NOT FOUND':
+      return false
+    case 'RECEIVED':
+      return false
+    case 'RUNNING':
+      return false
+    case 'ERROR':
+      return false
+    case 'DONE':
+      return false
+    default:
+      return true
   }
 }

@@ -1,5 +1,5 @@
 <div class="text">
-  <div>
+  <div class="button-list">
     <ul class="list">
       {{#each list as |item|}}
         <li class="inline {{textarea-select item.index selected}}"><a onclick={{action 'select' item.index}} >{{item.name}}</a></li>
