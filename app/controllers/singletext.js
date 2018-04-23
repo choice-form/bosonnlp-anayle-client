@@ -2,7 +2,22 @@ import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 
+import handleTag from '../utils/handle/handleTag'
+import handleNer from '../utils/handle/handleNer'
+import handleClassify from '../utils/handle/handleClassify'
+
 export default Controller.extend({
+  selected: 0,
+  list: [ // eslint-disable-line
+    { index: 0, name: '词性分析', value: 'my-tag', icon: 'fa fa-paper-plane' },
+    { index: 1, name: '实体识别', value: 'my-ner', icon: 'fa fa-tag' },
+    { index: 2, name: '依存文法', value: 'my-depparser', icon: 'fa fa-cubes' },
+    { index: 3, name: '情感分析', value: 'my-sentiment', icon: 'fa fa-heart-o' },
+    { index: 4, name: '新闻摘要', value: 'my-summary', icon: 'fa fa-flag-o' },
+    { index: 5, name: '新闻分类', value: 'my-classify', icon: 'fa fa-sitemap' },
+    { index: 6, name: '关键词提取', value: 'my-keywords', icon: 'fa fa-key' },
+    { index: 7, name: '词义联想', value: 'my-suggest', icon: 'fa fa-commenting-o' }
+  ],
   singleText: inject('single-text'),
   tag: computed('singleText.tag', function () {
     const data = handleTag(this.get('singleText').get('tag'))
@@ -31,7 +46,7 @@ export default Controller.extend({
     const data = this.get('singleText').suggest
     return data
   }),
-  summary:computed('singleText.summary',function(){
+  summary: computed('singleText.summary', function () {
     const data = this.get('singleText').summary
     return data
   }),
@@ -39,6 +54,10 @@ export default Controller.extend({
     return this.get('singleText').keywordsForSuggest
   }),
   actions: {
+    selectedChange(index) {
+      console.log(index)
+      this.set('selected', index)
+    },
     submit(text) {
       this.get('singleText').set('text', text)
       this.get('singleText').getTag()
@@ -61,133 +80,3 @@ export default Controller.extend({
     }
   }
 });
-
-function handleTag(data) {
-  if (!Array.isArray(data)) {
-    return []
-  }
-  const arr = data.map(item => {
-    const text = {
-      list: [],
-      tag: []
-    }
-    text.tag = [...new Set(item.tag)]
-    for (let i = 0; i < item.word.length; i++) {
-      const obj = {}
-      obj.word = item.word[i]
-      obj.tag = item.tag[i]
-      text.list.push(obj)
-    }
-    return text
-  })
-  return arr
-}
-
-function handleNer(data) {
-  if (!Array.isArray(data)) {
-    return []
-  }
-  const arr = data.map(item => {
-    const text = {
-      list: [],
-      entity: [],
-      originEntity: []
-    }
-
-    text.list = item.word.map(i => {
-      return {
-        value: i,
-        entity: null
-      }
-    })
-
-    // 提取实体到value
-    item.entity.forEach(ety => {
-      const start = ety[0]
-      const end = ety[1]
-      const name = ety[2]
-
-      text.entity.push(name)
-
-      const word = {
-        values: [],
-        value: null,
-        entity: {
-          start,
-          end,
-          name
-        }
-      }
-      for (let i = start; i < end; i++) {
-        word.values.push(item.word[i])
-      }
-
-      word.value = word.values.join('')
-
-      for (let i = start; i < end; i++) {
-        text.list[i] = { value: word.value, entity: name }
-      }
-
-      text.originEntity.push(word)
-
-    })
-
-    text.entity = [...new Set(text.entity)]
-
-    const list = []
-    for (let i = 0; i < text.list.length; i++) {
-      if (list.length === 0) {
-        list.push(text.list[i])
-      } else {
-        if (list[list.length - 1].value !== text.list[i].value) {
-          list.push(text.list[i])
-        }
-      }
-    }
-    text.list = list
-    return text
-  })
-
-  return arr
-}
-
-function handleClassify(data) {
-  if (!Array.isArray(data)) {
-    return null
-  }
-
-  const str = parseInt(data[0])
-
-  switch (str) {
-    case 0:
-      return '体育'
-    case 1:
-      return '教育'
-    case 2:
-      return '财经'
-    case 3:
-      return '社会'
-    case 4:
-      return '娱乐'
-    case 5:
-      return '军事'
-    case 6:
-      return '国内'
-    case 7:
-      return '科技'
-    case 8:
-      return '互联网'
-    case 9:
-      return '房产'
-    case 10:
-      return '国际'
-    case 11:
-      return '女人'
-    case 12:
-      return '汽车'
-    case 13:
-      return '游戏'
-    default:
-      return ''
-  }
-}

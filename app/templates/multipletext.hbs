@@ -1,26 +1,32 @@
-{{!-- {{outlet}} --}}
+<div class="big-title">
+  <div>
+    <h2>
+      <a href="/multipletext">多文本演示</a>
+    </h2>
+  </div>
+  <div>
+    <h2>
+      <a href="/singletext">单文本演示</a>
+    </h2>
+  </div>
+</div>
 
-<h1>多文本演示</h1>
+{{multiple-textarea text=text changeText=(action 'changeText') submit=(action 'getData')}}
 
-{{multiple-textarea text=text changeText=(action 'changeText')}}
+{{!-- <button onclick={{action 'getData'}}>分析数据</button> --}}
 
 <div class="content">
-  <div><h3>分析结果</h3></div>
-    <div class="result clearfix">
-      <div class="left area">
-        <ul style="list-style:none">
-          <li><a href="#my-cluster">话题聚集</a></li>
-          <li><a href="#my-emotion">情感分析</a></li>
-          <li><a href="#my-wc">词频</a></li>
-          <li><a href="#my-cloud">词云</a></li>
-        </ul>
-      </div>
-      <div class="right">
-        {{my-cluster data=cluster lineText=lineText sizeChange=(action 'sizeChange')}}
-        {{my-emotion data=emotion}}
-        {{my-wc data=wc}}
-        {{my-cloud data=cloud}}
-      </div>
+  <div>
+    <h3>分析结果</h3>
+  </div>
+  <div class="result clearfix">
+    <div class="left area">
+      {{my-menu list=list selected=selected selectedChange=(action 'selectedChange')}}
     </div>
+    <div class="right">
+      {{my-cluster data=cluster lineText=lineText sizeChange=(action 'sizeChange')}} {{my-emotion data=emotion}} {{my-wc data=wc}}
+      {{my-cloud data=cloud}}
+    </div>
+  </div>
   <div class="floor">底部</div>
 </div>

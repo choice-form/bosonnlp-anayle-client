@@ -36,18 +36,22 @@ export async function get(url) {
 }
 
 function handleStatus(status) {
-  switch (status) {
-    case 'NOT FOUND':
-      return false
-    case 'RECEIVED':
-      return false
-    case 'RUNNING':
-      return false
-    case 'ERROR':
-      return false
-    case 'DONE':
-      return false
-    default:
-      return true
+  if(status){
+    switch (status) {
+      case 'NOT FOUND':
+        return false
+      case 'RECEIVED':
+        return false
+      case 'RUNNING':
+        return false
+      case 'ERROR':
+        return false
+      case 'DONE':
+        return false
+      default:
+        return true
+    }
+  } else {
+    return false
   }
 }

@@ -1,5 +1,3 @@
-.multiple-text {}
-
 .new-list {
     background-color: #e2e2e2;
     border-radius: 5px;
@@ -10,8 +8,131 @@
     display: none;
 }
 
+.cluster-change {
+    margin-top: -40px;
+}
+
+.cluster-list {}
+
+.news-num {
+    float: left;
+    width: 10%;
+    margin-top: 5px;
+    line-height: 5rem; // height:100px;
+    text-align: center;
+}
+
+.particle {
+    margin-top: 15px;
+    padding-left: 15px;
+    .button-list {
+        float: left;
+        margin-top: -15px;
+    }
+    span {
+        display: block;
+        float: left;
+        margin-top: 5px;
+    }
+}
+
 .news-dl {
+    float: right;
+    padding: 10px;
+    width: 85%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    dl {
+        // width: 90%;
+    }
     dt {
         cursor: pointer;
     }
+    dd {
+        margin-left: 0;
+        li:nth-of-type(2n) {
+            background: #eeeeee; // color:rgb(235, 188, 188);
+        }
+        li {
+            padding: 5px;
+            border-radius: 3px; // color:rgb(223, 223, 180);
+        }
+    }
+    ul {
+        background: white;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 0;
+        padding: 1px;
+        border-radius: 3px;
+        border-right: 1px solid #e2e2e2;
+        border-left: 1px solid #e2e2e2;
+        border-bottom: 1px solid #e2e2e2;
+        li {
+            margin: 10px;
+            display: block;
+        }
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: 0; // padding-top: 0;
+        // padding-bottom: 0;
+    }
+}
+
+.plus-minus {
+    li:first-of-type {
+        border-right: 2px solid red;
+        padding: 0 10px;
+    }
+    span {
+        display: inline-block;
+        padding: 3px;
+        border-radius: 1px;
+    }
+}
+
+.emotion-list {
+    ul li {
+        padding-bottom: 10px;
+    }
+    ul li>div:first-of-type {
+        // padding:0 auto;
+        color: red;
+        width: 11%;
+        float: left;
+        padding-bottom: 10px;
+        font-size: 14px;
+    }
+    ul li>div:last-of-type {
+        float: left;
+        width: 85%;
+        background: white;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 0 8px;
+        p {
+            margin: 10px;
+        }
+    }
+}
+
+.circle-chart {
+    width: 60px;
+    margin:1px auto;
+}
+
+.wc {
+    margin: 5px;
+}
+
+.circle {
+    margin-left: 20px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 30px;
+    border: 2px solid red;
+    display: inline-block;
 }

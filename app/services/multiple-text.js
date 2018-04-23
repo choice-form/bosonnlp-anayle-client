@@ -7,22 +7,23 @@ import { multipleText as text } from './demo'
 
 export default Service.extend({
   text: text[0].text,
+  // text: null,
   clusterTaskId: null,
   alpha: 0.8,
   beta: 0.45,
-  // cluster: null,
+  cluster: null,
   lineText: computed('text', function () {
     const list = this.text.split(/\n/g)
     return list.map(item => {
       return item.replace(/^\s+/, '')
     })
   }),
-  cluster: [ // eslint-disable-line
-    { _id: 1, num: 2, list: [1, 2] },
-    { _id: 20, num: 2, list: [20, 21] },
-    { _id: 22, num: 2, list: [22, 24] },
-    { _id: 36, num: 2, list: [36, 37] }
-  ],
+  // cluster: [ // eslint-disable-line
+  //   { _id: 1, num: 2, list: [1, 2] },
+  //   { _id: 20, num: 2, list: [20, 21] },
+  //   { _id: 22, num: 2, list: [22, 24] },
+  //   { _id: 36, num: 2, list: [36, 37] }
+  // ],
   emotion: null,
   wc: null,
   initCluster() {
@@ -45,6 +46,7 @@ export default Service.extend({
   },
   async getCluster() {
     const self = this
+    // TODO: 真实获取数据取消注释
     const startUrl = `${baseUrl}/cluster/start/${this.clusterTaskId}?alpha=${this.alpha}&beta=${this.beta}`
     const statusUrl = `${baseUrl}/cluster/status/${this.clusterTaskId}`
     const resultUrl = `${baseUrl}/cluster/result/${this.clusterTaskId}`
@@ -74,18 +76,46 @@ export default Service.extend({
         }
       })
     }, 5000)
+
+    // const cluster = [ // eslint-disable-line
+    //   { _id: 1, num: 2, list: [1, 2] },
+    //   { _id: 20, num: 2, list: [20, 21] }
+    // ]
+    // self.set('cluster', cluster)
   },
   async getEmotion(type = 'general') {
     const url = `${baseUrl}/sentiment/${type}`
 
-    // TODO: 获取情感分析数据
-    const fetchList = this.get('lineText')
-    const body = {
-      text: this.text
-    }
-    const data = await post(url, body)
-  },
-  async getWc() {
+    // TODO: 真实获取数据取消注释
+    const fetchList = this.get('lineText').map((item) => {
+      const body = {
+        text: item,
+      }
+      return post(url, body)
+    })
+    Promise.all(fetchList).then(res => {
+      console.log(res)
+      // this.emotion = res
+      this.set('emotion',res)
+    })
 
+    // this.set('emotion', text[2].emotion)
+  },
+  async getWc(sensitivity = 3) {
+    const url = `${baseUrl}/ner/?sensitivity=${sensitivity}`;
+
+    // TODO: 真实获取数据取消注释
+    const fetchList = this.get('lineText').map(item => {
+      const body = {
+        text: item
+      };
+      return post(url, body)
+    })
+    Promise.all(fetchList).then(res => {
+      console.log(res);
+      this.set('wc', res)
+    })
+
+    // this.set('wc', text[0].wc)
   }
 });

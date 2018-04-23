@@ -11,9 +11,15 @@ export default Component.extend({
     { index: 4, name: '最集中', value: { alpha: 0, beta: 0.45 } },
   ],
   len: computed('data', function () {
-    return this.get('data').length
+    if(Array.isArray(this.get('data'))){
+      return this.get('data').length
+    }
+    return null
   }),
   resultList: computed('data', function () {
+    if (!Array.isArray(this.get('data'))) {
+      return null
+    }
     const list = this.get('data').slice()
     const lineText = this.get('lineText')
     const arr = list.map(item => {
@@ -31,7 +37,7 @@ export default Component.extend({
   actions: {
     change(index) {
       this.set('selected', index)
-      console.log(index)
+      console.log(this.list[index].value)
       this.get('sizeChange')(this.list[index].value)
     }
   }

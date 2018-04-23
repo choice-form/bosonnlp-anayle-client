@@ -1,4 +1,53 @@
+// @import "./font-awesome/less/font-awesome.less";
 @import "normalize.less";
 @import "singletext.less";
 @import "multipletext.less";
 @import "pos.less";
+.big-title {
+    div {
+        display: inline-block;
+        padding: 0 10px;
+    }
+}
+
+.menu {
+    ul {
+        margin-left: -40px;
+        li {
+            cursor: pointer; // margin: 5px 2px;
+            line-height: 1.6rem;
+            border-radius: 2px;
+            margin: 0 auto;
+            padding: 2px 0;
+            div {
+                // text-align: center;
+                margin-left: 15%;
+                padding-left: 5%;
+                width: 70%
+            }
+            a {
+                color: rgb(114, 114, 114);
+                margin-left: 5px;
+                text-decoration-line: none;
+            }
+            a:link {
+                text-decoration-line: none;
+                color: white;
+            }
+            a:hover {
+                text-decoration: none;
+                color: white;
+            }
+            a:active {
+                text-decoration: none;
+                color: white;
+            }
+        }
+        li:hover {
+            background-color: rgb(200, 200, 200);
+        }
+    }
+    .selected {
+        background-color: rgb(180, 180, 180);
+    }
+}

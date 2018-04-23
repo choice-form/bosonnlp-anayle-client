@@ -1,24 +1,35 @@
 <div class="area" id="my-cluster">
-  <div>
-    <div><h3>话题聚类:</h3></div>
+  <div class="clearfix">
+    <div class="title">
+      <h3>话题聚类:</h3>
+    </div>
   </div>
-  <div>
+  <div class="result-center">
+    {{#if len}}
     <div>根据您的文本，我们为您分类为{{len}}组相似话题</div>
-    <div>选择粒度:
-      <div class="button-list">
-        <ul class="list">
-          {{#each list as |item|}}
-          <li class="inline {{is-selected item.index selected}}"><a onclick={{action 'change' item.index}}>{{item.name}}</a></li>
-          {{/each}}
-        </ul>
+    {{/if}}
+    <div>
+      <div class="clearfix particle">
+        <span>选择粒度:</span>
+        <div class="button-list">
+          <ul class="list">
+            {{#each list as |item|}}
+            <li class="inline {{is-selected item.index selected}}">
+              <a onclick={{action 'change' item.index}}>{{item.name}}</a>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
       </div>
-      <div>
-        {{#each resultList as |items|}}
-        <div>
-          <div>{{items.num}}</div>
+      <div class="clearfix">
+        {{#if resultList}} {{#each resultList as |items|}}
+        <div class="clearfix">
+          <div class="news-num">
+            <span class="circle">{{items.num}}</span>
+          </div>
           {{my-dl list=items.list}}
         </div>
-        {{/each}}
+        {{/each}} {{/if}}
       </div>
     </div>
   </div>

@@ -1,10 +1,14 @@
 <div class="area" id="my-tag">
-  <div><h3>词性分析:</h3></div>
-  <div>
+  <div class="clearfix">
+    <div class="title">
+      <h3>词性分析:</h3>
+    </div>
+  </div>
+  <div class="result-center">
     <ul class="list">
       {{#each data as |items|}}
       <li class="clearfix">
-        <div style="float:left;width:75%">
+        <div class="words">
           <ul class="list">
             {{#each items.list as |item|}}
             <li class="inline">
@@ -13,7 +17,7 @@
             {{/each}}
           </ul>
         </div>
-        <div style="float:right;width:25%">
+        <div class="word-mean">
           <div>类别图示:</div>
           <ul class="list">
             {{#each items.tag as |item|}}

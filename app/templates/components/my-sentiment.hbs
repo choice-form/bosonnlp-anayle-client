@@ -13,19 +13,35 @@
       </ul>
     </div>
   </div>
-  <div>
+  <div class="result-center">
     <div>
       <ul class="list">
         {{#each data as |items|}}
-        <li>
-          <div>
+        <li class="clearfix">
+          <div class="half">
             <ul class="list">
               {{#each items as |item|}}
               <li class="inline">{{item}}</li>
               {{/each}}
             </ul>
             <div class="chart" id="chart">
-
+            </div>
+          </div>
+          <div class="half describe">
+            <div>
+              <div class="describe-line">
+                <i class="front-ic ic"></i>
+                正面
+              </div>
+              <div class="describe-line">
+                <i class="reverse-ic ic"></i>
+                负面
+              </div>
+            </div>
+            <div>
+              <h4>说明:</h4>
+              <p>0~0.5之间判断为负面</p>
+              <p>0.5~1之间判断为正面</p>
             </div>
           </div>
         </li>

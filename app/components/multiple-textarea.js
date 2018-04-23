@@ -16,6 +16,10 @@ export default Component.extend({
     select(value) {
       this.set('selected', value)
       this.get('changeText')(value)
+    },
+    submit(){
+      // debugger
+      this.get('submit')(this.text)
     }
   }
 });

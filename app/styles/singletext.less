@@ -92,14 +92,92 @@ table {
 .title {
     float: left;
     padding-left: 5px;
+    h3 {
+        margin-left: 5px;
+    }
 }
 
 .button-list {
     float: right;
-    padding-right: 5px; // border:1px solid red;
+    padding-right: 10px; // border:1px solid red;
     li {
         border: 1px solid #999;
         padding: 3px;
         cursor: pointer;
     }
+}
+
+.result-center {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;
+    margin-bottom:10px;
+}
+
+.words {
+    float: left;
+    width: 75%;
+    // margin-bottom: 10px;
+}
+
+.word-mean {
+    float: right;
+    width: 25%;
+    div:first-of-type {
+        margin-top: -15px;
+        font-size: 1rem;
+        line-height: 2.25rem;
+    }
+    ul {
+        margin-right: 10px;
+        // margin-bottom: 10px;
+    }
+}
+
+.half {
+    float: left;
+    width: 50%; // margin-bottom:10%;
+}
+
+.describe {
+    .describe-line {
+        padding: 2px;
+    }
+    .ic {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        vertical-align: bottom;
+    }
+    .front-ic {
+        background-color: rebeccapurple;
+    }
+    .reverse-ic {
+        background-color: blue;
+    }
+}
+
+.summary {
+    padding: 10px;
+}
+
+.inline-classify {
+    padding: 10px 20px;
+    li {
+        // margin:0 5px;
+        span {
+            padding: 2px 5px;
+            border-radius: 2px;
+        }
+    }
+    // margin-bottom:15px;
+}
+
+.key-table {
+    display: flex;
+    justify-content: center;
+    // padding-bottom:10px;
+}
+.key-word{
+  padding-left: 20px;
 }

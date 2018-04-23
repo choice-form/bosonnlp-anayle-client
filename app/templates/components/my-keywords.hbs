@@ -1,31 +1,33 @@
 <div class="area" id="my-keywords">
-  <div><h3>关键词提取:</h3></div>
-  <div>
-    {{!-- <ul class="list">
+  <div class="clearfix">
+    <div class="title">
+      <h3>关键词提取:</h3>
+    </div>
+  </div>
+  <div class="result-center">
+    {{!--
+    <ul class="list">
       {{#each data as |items|}}
-      <li> --}}
-        {{#if data}}
-        <div>
+      <li> --}} {{#if data}}
+        <div class="key-table">
           <table class="table">
             <thead class="thead">
               <tr>
-                <td>权重</td>
                 <td>名称</td>
+                <td>权重</td>
               </tr>
             </thead>
             <tbody class="tbody">
               {{#each data as |item|}}
-                <tr>
-                  {{#each item as |i|}}
-                  <td>{{i}}</td>
-                  {{/each}}
-                </tr>
+              <tr>
+                <td>{{item.lastObject}}</td>
+                <td>{{item.firstObject}}</td>
+              </tr>
               {{/each}}
             </tbody>
           </table>
         </div>
-        {{/if}}
-      {{!-- </li>
+        {{/if}} {{!-- </li>
       {{/each}}
     </ul> --}}
   </div>

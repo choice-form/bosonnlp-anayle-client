@@ -1,6 +1,56 @@
 <div class="area" id="my-emotion">
-  <div>
-    <div><h3>情感分析:</h3></div>
+  <div class="clearfix">
+    <div class="title">
+      <h3>情感分析:</h3>
+    </div>
+    <div class="button-list">
+      <ul class="list">
+        {{#each list as |item|}}
+        <li class="inline {{is-selected item.index selected}}">
+          <a onclick={{action 'selectedChange' item.index}}>{{item.name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
   </div>
-  <div></div>
+  <div class="result-center">
+    <div>
+      <ul class="list plus-minus">
+        {{#each emotionList as |item|}}
+        <li class="inline">
+          <span class="{{is-selected item.index emotionSelected}}" onclick={{action 'emotionChange' item.index}}>{{item.name}}</span>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="emotion-list">
+      {{#if frontList}} {{#if emotionSelected}}
+      <ul class="list">
+        {{#each reverseList as |item|}}
+        <li class="clearfix">
+          <div>
+            {{circle-chart data=item.reverse}}
+          </div>
+          <div>
+            <p>{{item.text}}</p>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+      {{else}}
+      <ul class="list">
+        {{#each frontList as |item|}}
+        <li class="clearfix">
+          <div>
+            {{circle-chart data=item.front}}
+          </div>
+          <div>
+            <p>{{item.text}}</p>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+      {{/if}} {{/if}}
+    </div>
+  </div>
 </div>

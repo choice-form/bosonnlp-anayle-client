@@ -1,28 +1,19 @@
-{{!-- {{outlet}} --}}
-
-<h1>单文本演示</h1>
-{{!-- <div class="text">
-  <textarea name="text" id="text"></textarea>
+<div class="big-title">
   <div>
-    <button type="submit">提交</button>
+    <h2><a href="multipletext">多文本演示</a></h2>
   </div>
-</div> --}}
+  <div>
+    <h2><a href="singletext">单文本演示</a></h2>
+  </div>
+</div>
+
 {{my-textarea submit=(action 'submit')}}
 
 <div class="content">
   <div><h3>分析结果</h3></div>
   <div class="result clearfix">
     <div class="left area">
-      <ul style="list-style:none">
-        <li><a href="#my-tag">词性分析</a></li>
-        <li><a href="#my-ner">实体识别</a></li>
-        <li><a href="#my-depparser">依存文法</a></li>
-        <li><a href="#my-sentiment">情感分析</a></li>
-        <li><a href="#my-summary">新闻摘要</a></li>
-        <li><a href="#my-classify">新闻分类</a></li>
-        <li><a href="#my-keywords">关键词提取</a></li>
-        <li><a href="#my-suggest">词义联想</a></li>
-      </ul>
+      {{my-menu list=list selected=selected selectedChange=(action 'selectedChange')}}
     </div>
     <div class="right">
       {{my-tag data=tag}}

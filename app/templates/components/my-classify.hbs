@@ -1,11 +1,19 @@
 <div class="area" id="my-classify">
-  <div><h3>新闻分类:</h3></div>
-  <div>
-    {{data}}
-    <ul class="list">
-      {{#each list as |item|}}
-        <li class="inline"><span class={{classify-selected data item.index}}>{{item.name}}</span></li>
-      {{/each}}
-    </ul>
+  <div class="clearfix">
+    <div class="title">
+      <h3>新闻分类:</h3>
+    </div>
+  </div>
+  <div class="result-center">
+    {{!-- {{data}} --}}
+    <div class="inline-classify">
+      <ul class="list">
+        {{#each list as |item|}}
+        <li class="inline">
+          <span class={{classify-selected data item.index}}>{{item.name}}</span>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
   </div>
 </div>

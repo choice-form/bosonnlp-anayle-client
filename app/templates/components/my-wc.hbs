@@ -1,6 +1,31 @@
 <div class="area" id="my-wc">
-  <div>
-    <div><h3>词频:</h3></div>
+  <div class="clearfix">
+    <div class="title">
+      <h3>词频:</h3>
+    </div>
   </div>
-  <div></div>
+  <div class="result-center">
+    <div>
+      <ul class="list">
+        {{#each data.wc as |item|}}
+        <li class="inline wc">
+          <div style="inline-block">
+            <span class={{item.entity}}>{{item.word}}</span>
+            <span>{{item.num}}</span>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div>
+      <h5>实体类别图示:</h5>
+      <ul class="list">
+        {{#each data.entity as |item|}}
+        <li class="inline">
+          <span class={{item}}>{{wc-entity item}}</span>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 </div>

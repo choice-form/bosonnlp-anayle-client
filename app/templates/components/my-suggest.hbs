@@ -1,21 +1,27 @@
 <div class="area" id="my-suggest">
-  <div><h3>词义联想:</h3></div>
-  <div>
-    <div>关键词 - {{word}}</div>
-    <div>
+  <div class="clearfix">
+    <div class="title">
+      <h3>词义联想:</h3>
+    </div>
+  </div>
+  <div class="result-content">
+    <div class="key-word">关键词 - {{word}}</div>
+    <div class="key-table">
       <table>
         <thead>
           <tr>
-            <td>相关性</td>
             <td>名称</td>
+            <td>相关性</td>
           </tr>
         </thead>
         <tbody>
           {{#each data as |items|}}
           <tr>
-            {{#each items as |v|}}
+            <td>{{items.lastObject}}</td>
+            <td>{{items.firstObject}}</td>
+            {{!-- {{#each items as |v|}}
             <td>{{v}}</td>
-            {{/each}}
+            {{/each}} --}}
           </tr>
           {{/each}}
         </tbody>

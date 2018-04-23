@@ -1,0 +1,10 @@
+<ul class="list">
+  {{#each list as |item|}}
+  <li class="menu-item {{is-selected selected item.index}}">
+    <div>
+      <i class={{item.icon}} aria-hidden="true"></i>
+      <a href="#{{item.value}}" onclick={{action 'selectedChange' item.index}}>{{item.name}}</a>
+    </div>
+  </li>
+  {{/each}}
+</ul>
