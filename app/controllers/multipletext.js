@@ -35,6 +35,7 @@ export default Controller.extend({
     return handleWc(this.get('multipleText').wc)
   }),
   actions: {
+    // 菜单选择
     selectedChange(index) {
       this.set('selected', index)
     },
@@ -47,11 +48,15 @@ export default Controller.extend({
     changeText(index) {
       this.get('multipleText').set('text', text[index].text)
     },
+    // 话题聚类
     sizeChange(value) {
       this.get('multipleText').set('alpha', value.alpha)
       this.get('multipleText').set('beta', value.beta)
       // TODO: 实际请求需要去掉注释
       this.get('multipleText').getCluster()
+    },
+    emotionChange(value){
+      this.get('multipleText').getEmotion(value)
     }
   },
   init() {

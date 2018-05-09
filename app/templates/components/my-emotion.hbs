@@ -7,7 +7,7 @@
       <ul class="list">
         {{#each list as |item|}}
         <li class="inline {{is-selected item.index selected}}">
-          <a onclick={{action 'selectedChange' item.index}}>{{item.name}}</a>
+          <a onclick={{action 'emotionChange' item.index}}>{{item.name}}</a>
         </li>
         {{/each}}
       </ul>
@@ -18,7 +18,7 @@
       <ul class="list plus-minus">
         {{#each emotionList as |item|}}
         <li class="inline">
-          <span class="{{is-selected item.index emotionSelected}}" onclick={{action 'emotionChange' item.index}}>{{item.name}}</span>
+          <span class="{{is-selected item.index emotionSelected}}" onclick={{action 'selectedChange' item.index}}>{{item.name}}</span>
         </li>
         {{/each}}
       </ul>

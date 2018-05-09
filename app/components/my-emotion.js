@@ -36,12 +36,13 @@ export default Component.extend({
   }),
   actions: {
     selectedChange(index) {
-      this.set('selected', index)
-      console.log(this.list[index].value)
-    },
-    emotionChange(index) {
       this.set('emotionSelected', index)
       console.log(index);
+    },
+    emotionChange(index) {
+      this.set('selected', index)
+      console.log(this.list[index].value)
+      this.get('emotionChange')(this.list[index].value)
     }
   }
 });
